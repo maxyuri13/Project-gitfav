@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --ff-primary: 'Roboto', sans-serif;
+  --ff-secondary: 'Roboto Mono', monospace;
+  --text-color: hsl(240, 9%, 89%);
+  --neutral-white: hsl(0, 0%, 100%);
+  --input-color: hsl(191, 65%, 7%);
+  --bg-color: hsl(0, 0%, 0%);
+  --button-color: hsl(195, 91%, 25%);
+  --border-color: hsl(191, 31%, 42%);
+  --bg-table: hsl(194, 73%, 13%);
+  --bg-table-header: #092D38;
+  --bg-odd: #06161B80;
+  --bg-even: #06181C;
+  --remove-coor: hsl(355, 91%, 66%);
+  --text-msgback: hsl(189, 4%, 32%);
+}
+
+body {
+  color: var(--neutral-white);
+  font-size: 1.6rem;
+  background-color: var(--bg-color);
+}
+
+body * {
+  font-family: var(--ff-primary);
+}
+
+.sr-only {
+  position: absolute;
+  width: .1rem;
+  height: .1rem;
+  padding: 0;
+  margin: -.1rem;
+  overflow: hidden;
+  clip: react(0, 0, 0 ,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+#app {
+  padding: 2rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 11.5rem 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 46.2rem;
+  height: 4.8rem;
+  border-radius: .5rem;
+  border: none;
+  padding: 1.6rem;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.search input:focus {
+  color: var(--text-color);
+}
+
+.search button {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  background-color: var(--button-color);
+  border-radius: .5rem;
+  border: none;
+  height: 4.8rem;
+  padding: 1.2rem 3.2rem;
+  margin-left: .8rem;
+  color: var(--neutral-white);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.star .star-blue {
+  display: none;
+}
+
+.star:hover .star-white {
+  display: none;
+}
+.search button:hover, .star:hover .star-blue  {
+  background-color: var(--neutral-white);
+  color: var(--button-color);
+  display: inline;
+  vertical-align: middle;
+}
+
+.star:hover .star-blue {
+  padding-right: .45rem;
+}
+
+.table-container {
+  max-height: 500px;
+  overflow-y: auto;
+  border-radius: 1.2rem 1.2rem 0 0;
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  position: relative;
+}
+
+.table-container.with-gits {
+  border-radius: 1.2rem;
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-table);    
+}
+
+.scrollable-content {
+  overflow: hidden;   
+  position: relative;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table * {
+  font-size: 2rem;
+  color: var(--text-color);
+}
+
+table th {
+  background: var(--bg-table-header);
+  text-align: left;
+  font-weight: 700;
+  padding: 1.6rem 2.4rem;
+}
+
+table tr:nth-child(odd) {
+  background: var(--bg-odd);
+}
+
+table tr:nth-child(even) {
+  background: var(--bg-even);
+}
+
+table tr:last-child td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+table td {
+  padding: 1.6rem 2.4rem;
+  text-align: left;
+}
+
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: -.1rem;
+}
+
+td.user img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+td.user a {
+  text-decoration: none;
+}
+
+td.user a p {
+  font-weight: bold;
+}
+
+td .remove {
+  background: none;
+  border: none;
+  color: var(--remove-coor);
+  cursor: pointer;
+}
+
+.msgback {
+  font-family: var(--ff-secondary);
+  height: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  background: var(--input-color);
+  color: var(--text-msgback);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 1.2rem 1.2rem;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  height: 0;
+}
+
+::-webkit-scrollbar {
+  width: .6rem;
+  height: .6rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; 
+  border-radius: .6rem; 
+}
+
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .search input {
+    width: 80%;
+  }
+
+  table {
+    min-width: 61rem;
+  }
+}
